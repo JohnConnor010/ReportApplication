@@ -591,6 +591,10 @@
     <Content Include="kindeditor\asp.net\upload_ppt_file.ashx" />
     <Content Include="App_Browsers\IE10.browser" />
     <Content Include="Manage\FatchEmail.ashx" />
+    <Content Include="App_Data\WXBigData_ApplicationUser.bak" />
+    <Content Include="App_Data\WXBigData_ChartDatabase.bak" />
+    <Content Include="App_Data\WXBigData_DataSetting.bak" />
+    <Content Include="App_Data\WXBigData_OpinionReport.bak" />
     <None Include="Properties\PublishProfiles\Publish1.pubxml" />
     <Content Include="Models\ReportModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1140,7 +1144,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Download\PicTmpls\" />
     <Folder Include="kindeditor\attached\" />
     <Folder Include="Scripts\WebForms\" />
