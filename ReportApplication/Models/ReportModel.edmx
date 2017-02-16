@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WXBigData_OpinionReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="200" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="MainCategoryID" Type="int" />
+          <Property Name="MediumCategoryID" Type="int" />
+          <Property Name="SmallCategoryID" Type="int" />
+          <Property Name="ClickCount" Type="int" />
+          <Property Name="ReplyCount" Type="int" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="Favorite" Type="varchar" MaxLength="50" />
+          <Property Name="Site" Type="varchar" MaxLength="50" />
+          <Property Name="ChannelType" Type="varchar" MaxLength="50" />
+          <Property Name="Content" Type="text" />
+          <Property Name="ScreenshotsPath" Type="varchar" MaxLength="100" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="JudgeContent" Type="text" />
+          <Property Name="SuggestContent" Type="text" />
+          <Property Name="AddDate" Type="datetime" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="RelateQuestion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChannelText" Type="varchar" MaxLength="50" />
+          <Property Name="ChannelValue" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChannelContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChannelValue" Type="varchar" MaxLength="50" />
+          <Property Name="Content" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerInfoID" Type="int" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="Summary" Type="ntext" />
+        </EntityType>
+        <EntityType Name="CustomerCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Summary" Type="ntext" />
+        </EntityType>
+        <EntityType Name="QuestionCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ReferenceReport">
+          <Key>
+            <PropertyRef Name="ReferenceReportID" />
+          </Key>
+          <Property Name="ReferenceReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ReportTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="FilePath" Type="varchar" MaxLength="200" />
+          <Property Name="AddDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportName" Type="varchar" MaxLength="50" />
+          <Property Name="Company" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ReportType" Type="varchar" MaxLength="50" />
+          <Property Name="Year" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Month" Type="varchar" MaxLength="50" />
+          <Property Name="Day" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentNumber" Type="varchar" MaxLength="50" />
+          <Property Name="TotalNumber" Type="nchar" MaxLength="10" />
+          <Property Name="StrText" Type="varchar" MaxLength="50" />
+          <Property Name="News_number" Type="int" />
+          <Property Name="Hudong_number" Type="int" />
+          <Property Name="Mingan_number" Type="int" />
+          <Property Name="Info_total_pic" Type="varchar" MaxLength="100" />
+          <Property Name="PriorityArticles" Type="varchar" MaxLength="100" />
+          <Property Name="DistributeSummary" Type="text" />
+          <Property Name="Distribute_Pic" Type="varchar" MaxLength="100" />
+          <Property Name="DistributeContent" Type="text" />
+          <Property Name="NextWeekWarning_Pic" Type="varchar" MaxLength="100" />
+          <Property Name="NextWeekMinganValue" Type="varchar" MaxLength="50" />
+          <Property Name="NextWeekSustainNumber" Type="int" />
+          <Property Name="AttentionQuestions" Type="text" />
+          <Property Name="ReportsExcerpt" Type="varchar" MaxLength="100" />
+          <Property Name="Week_Pic" Type="varchar" MaxLength="100" />
+          <Property Name="LowExponent" Type="int" />
+          <Property Name="HeightExponent" Type="int" />
+          <Property Name="AvgExponent" Type="int" />
+          <Property Name="StartMonth" Type="int" />
+          <Property Name="StartDay" Type="int" />
+          <Property Name="LowNumber" Type="int" />
+          <Property Name="EndMonth" Type="int" />
+          <Property Name="EndDay" Type="int" />
+          <Property Name="HeightNumber" Type="int" />
+          <Property Name="Tend" Type="varchar" MaxLength="50" />
+          <Property Name="Attention_Picture" Type="varchar" MaxLength="100" />
+          <Property Name="Total_AttentionNumber" Type="int" />
+          <Property Name="Mobile_AttentNumber" Type="int" />
+          <Property Name="Total_FloatingType" Type="varchar" MaxLength="50" />
+          <Property Name="Total_AttentionPercent" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile_FloatingType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile_AttentionPercent" Type="varchar" MaxLength="50" />
+          <Property Name="AttentionCities" Type="varchar" MaxLength="100" />
+          <Property Name="Police_pic" Type="varchar" MaxLength="100" />
+          <Property Name="Topic1Guide" Type="text" />
+          <Property Name="Topic1_pic" Type="varchar" MaxLength="100" />
+          <Property Name="Topic2Guide" Type="text" />
+          <Property Name="Topic2_pic" Type="varchar" MaxLength="100" />
+          <Property Name="Topic3Guide" Type="text" />
+          <Property Name="Topic3_pic" Type="varchar" MaxLength="100" />
+          <Property Name="Investment_pic" Type="varchar" MaxLength="100" />
+          <Property Name="Technology_pic" Type="varchar" MaxLength="100" />
+          <Property Name="Reference_pic" Type="varchar" MaxLength="100" />
+          <Property Name="AddDate" Type="date" />
+          <Property Name="Paper_Number" Type="int" />
+          <Property Name="Topic1Title" Type="varchar" MaxLength="50" />
+          <Property Name="Topic2Title" Type="varchar" MaxLength="50" />
+          <Property Name="Topic3Title" Type="varchar" MaxLength="50" />
+          <Property Name="Subsidiary" Type="nvarchar" MaxLength="50" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ReportNumber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="CurrentNumber" Type="int" />
+          <Property Name="TotalNumber" Type="int" />
+          <Property Name="ReportTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="SendPort">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="HandPhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="Weixin" Type="nvarchar" MaxLength="100" />
+          <Property Name="QQ" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Subsidiary">
+          <Key>
+            <PropertyRef Name="SubsidiaryID" />
+          </Key>
+          <Property Name="SubsidiaryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Subsidiary_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Subsidiary" Type="Self.Subsidiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Subsidiary">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WXBigData_OpinionReportModelStoreContainer">
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChannelContent" EntityType="Self.ChannelContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerCategory" EntityType="Self.CustomerCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionCategory" EntityType="Self.QuestionCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReferenceReport" EntityType="Self.ReferenceReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportNumber" EntityType="Self.ReportNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SendPort" EntityType="Self.SendPort" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subsidiary" EntityType="Self.Subsidiary" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Subsidiary_Customer" Association="Self.FK_Subsidiary_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Subsidiary" EntitySet="Subsidiary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WXBigData_OpinionReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ReportType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="StrText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="News_number" Type="Int32" />
+          <Property Name="Hudong_number" Type="Int32" />
+          <Property Name="Mingan_number" Type="Int32" />
+          <Property Name="Info_total_pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityArticles" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DistributeSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Distribute_Pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DistributeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NextWeekWarning_Pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NextWeekMinganValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NextWeekSustainNumber" Type="Int32" />
+          <Property Name="AttentionQuestions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReportsExcerpt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Week_Pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LowExponent" Type="Int32" />
+          <Property Name="HeightExponent" Type="Int32" />
+          <Property Name="AvgExponent" Type="Int32" />
+          <Property Name="StartMonth" Type="Int32" />
+          <Property Name="StartDay" Type="Int32" />
+          <Property Name="LowNumber" Type="Int32" />
+          <Property Name="EndMonth" Type="Int32" />
+          <Property Name="EndDay" Type="Int32" />
+          <Property Name="HeightNumber" Type="Int32" />
+          <Property Name="Tend" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Attention_Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Total_AttentionNumber" Type="Int32" />
+          <Property Name="Mobile_AttentNumber" Type="Int32" />
+          <Property Name="Total_FloatingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_AttentionPercent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile_FloatingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile_AttentionPercent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AttentionCities" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Police_pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Topic1Guide" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Topic1_pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Topic2Guide" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Topic2_pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Topic3Guide" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Topic3_pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Investment_pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Technology_pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Reference_pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddDate" Type="DateTime" Precision="0" />
+          <Property Name="Paper_Number" Type="Int32" />
+          <Property Name="Topic1Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Topic2Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Topic3Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subsidiary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ReportNumber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CurrentNumber" Type="Int32" />
+          <Property Name="TotalNumber" Type="Int32" />
+          <Property Name="ReportTypeId" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="ReportContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Reports" EntityType="Self.Report" />
+          <EntitySet Name="ReportNumbers" EntityType="Self.ReportNumber" />
+          <EntitySet Name="Customers" EntityType="WXBigData_OpinionReportModel.Customer" />
+          <EntitySet Name="Articles" EntityType="WXBigData_OpinionReportModel.Article" />
+          <EntitySet Name="ReferenceReports" EntityType="WXBigData_OpinionReportModel.ReferenceReport" />
+          <EntitySet Name="CustomerCategories" EntityType="WXBigData_OpinionReportModel.CustomerCategory" />
+          <EntitySet Name="SendPorts" EntityType="WXBigData_OpinionReportModel.SendPort" />
+          <EntitySet Name="Subsidiaries" EntityType="WXBigData_OpinionReportModel.Subsidiary" />
+          <AssociationSet Name="FK_Subsidiary_Customer" Association="WXBigData_OpinionReportModel.FK_Subsidiary_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Subsidiary" EntitySet="Subsidiaries" />
+          </AssociationSet>
+          <EntitySet Name="Channels" EntityType="WXBigData_OpinionReportModel.Channel" />
+          <EntitySet Name="ChannelContents" EntityType="WXBigData_OpinionReportModel.ChannelContent" />
+          <EntitySet Name="QuestionCategories" EntityType="WXBigData_OpinionReportModel.QuestionCategory" />
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerInfoID" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subsidiaries" Relationship="WXBigData_OpinionReportModel.FK_Subsidiary_Customer" FromRole="Customer" ToRole="Subsidiary" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="MainCategoryID" Type="Int32" />
+          <Property Name="MediumCategoryID" Type="Int32" />
+          <Property Name="SmallCategoryID" Type="Int32" />
+          <Property Name="ClickCount" Type="Int32" />
+          <Property Name="ReplyCount" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Favorite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChannelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ScreenshotsPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="JudgeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SuggestContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="RelateQuestion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ReferenceReport">
+          <Key>
+            <PropertyRef Name="ReferenceReportID" />
+          </Key>
+          <Property Name="ReferenceReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ReportTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AddDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CustomerCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SendPort">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="HandPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Weixin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QQ" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Subsidiary">
+          <Key>
+            <PropertyRef Name="SubsidiaryID" />
+          </Key>
+          <Property Name="SubsidiaryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="WXBigData_OpinionReportModel.FK_Subsidiary_Customer" FromRole="Subsidiary" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_Subsidiary_Customer">
+          <End Type="WXBigData_OpinionReportModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="WXBigData_OpinionReportModel.Subsidiary" Role="Subsidiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Subsidiary">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChannelText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChannelValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ChannelContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChannelValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QuestionCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WXBigData_OpinionReportModelStoreContainer" CdmEntityContainer="ReportContext">
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="Subsidiary" ColumnName="Subsidiary" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="CurrentNumber" ColumnName="CurrentNumber" />
+                <ScalarProperty Name="TotalNumber" ColumnName="TotalNumber" />
+                <ScalarProperty Name="StrText" ColumnName="StrText" />
+                <ScalarProperty Name="News_number" ColumnName="News_number" />
+                <ScalarProperty Name="Hudong_number" ColumnName="Hudong_number" />
+                <ScalarProperty Name="Mingan_number" ColumnName="Mingan_number" />
+                <ScalarProperty Name="Info_total_pic" ColumnName="Info_total_pic" />
+                <ScalarProperty Name="PriorityArticles" ColumnName="PriorityArticles" />
+                <ScalarProperty Name="DistributeSummary" ColumnName="DistributeSummary" />
+                <ScalarProperty Name="Distribute_Pic" ColumnName="Distribute_Pic" />
+                <ScalarProperty Name="DistributeContent" ColumnName="DistributeContent" />
+                <ScalarProperty Name="NextWeekWarning_Pic" ColumnName="NextWeekWarning_Pic" />
+                <ScalarProperty Name="NextWeekMinganValue" ColumnName="NextWeekMinganValue" />
+                <ScalarProperty Name="NextWeekSustainNumber" ColumnName="NextWeekSustainNumber" />
+                <ScalarProperty Name="AttentionQuestions" ColumnName="AttentionQuestions" />
+                <ScalarProperty Name="ReportsExcerpt" ColumnName="ReportsExcerpt" />
+                <ScalarProperty Name="Week_Pic" ColumnName="Week_Pic" />
+                <ScalarProperty Name="LowExponent" ColumnName="LowExponent" />
+                <ScalarProperty Name="HeightExponent" ColumnName="HeightExponent" />
+                <ScalarProperty Name="AvgExponent" ColumnName="AvgExponent" />
+                <ScalarProperty Name="StartMonth" ColumnName="StartMonth" />
+                <ScalarProperty Name="StartDay" ColumnName="StartDay" />
+                <ScalarProperty Name="LowNumber" ColumnName="LowNumber" />
+                <ScalarProperty Name="EndMonth" ColumnName="EndMonth" />
+                <ScalarProperty Name="EndDay" ColumnName="EndDay" />
+                <ScalarProperty Name="HeightNumber" ColumnName="HeightNumber" />
+                <ScalarProperty Name="Tend" ColumnName="Tend" />
+                <ScalarProperty Name="Attention_Picture" ColumnName="Attention_Picture" />
+                <ScalarProperty Name="Total_AttentionNumber" ColumnName="Total_AttentionNumber" />
+                <ScalarProperty Name="Mobile_AttentNumber" ColumnName="Mobile_AttentNumber" />
+                <ScalarProperty Name="Total_FloatingType" ColumnName="Total_FloatingType" />
+                <ScalarProperty Name="Total_AttentionPercent" ColumnName="Total_AttentionPercent" />
+                <ScalarProperty Name="Mobile_FloatingType" ColumnName="Mobile_FloatingType" />
+                <ScalarProperty Name="Mobile_AttentionPercent" ColumnName="Mobile_AttentionPercent" />
+                <ScalarProperty Name="AttentionCities" ColumnName="AttentionCities" />
+                <ScalarProperty Name="Police_pic" ColumnName="Police_pic" />
+                <ScalarProperty Name="Topic1Guide" ColumnName="Topic1Guide" />
+                <ScalarProperty Name="Topic1_pic" ColumnName="Topic1_pic" />
+                <ScalarProperty Name="Topic2Guide" ColumnName="Topic2Guide" />
+                <ScalarProperty Name="Topic2_pic" ColumnName="Topic2_pic" />
+                <ScalarProperty Name="Topic3Guide" ColumnName="Topic3Guide" />
+                <ScalarProperty Name="Topic3_pic" ColumnName="Topic3_pic" />
+                <ScalarProperty Name="Investment_pic" ColumnName="Investment_pic" />
+                <ScalarProperty Name="Technology_pic" ColumnName="Technology_pic" />
+                <ScalarProperty Name="Reference_pic" ColumnName="Reference_pic" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Paper_Number" ColumnName="Paper_Number" />
+                <ScalarProperty Name="Topic1Title" ColumnName="Topic1Title" />
+                <ScalarProperty Name="Topic2Title" ColumnName="Topic2Title" />
+                <ScalarProperty Name="Topic3Title" ColumnName="Topic3Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportNumbers">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.ReportNumber">
+              <MappingFragment StoreEntitySet="ReportNumber">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CurrentNumber" ColumnName="CurrentNumber" />
+                <ScalarProperty Name="TotalNumber" ColumnName="TotalNumber" />
+                <ScalarProperty Name="ReportTypeId" ColumnName="ReportTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CustomerInfoID" ColumnName="CustomerInfoID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="RelateQuestion" ColumnName="RelateQuestion" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="SuggestContent" ColumnName="SuggestContent" />
+                <ScalarProperty Name="JudgeContent" ColumnName="JudgeContent" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ScreenshotsPath" ColumnName="ScreenshotsPath" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ChannelType" ColumnName="ChannelType" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Favorite" ColumnName="Favorite" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ReplyCount" ColumnName="ReplyCount" />
+                <ScalarProperty Name="ClickCount" ColumnName="ClickCount" />
+                <ScalarProperty Name="SmallCategoryID" ColumnName="SmallCategoryID" />
+                <ScalarProperty Name="MediumCategoryID" ColumnName="MediumCategoryID" />
+                <ScalarProperty Name="MainCategoryID" ColumnName="MainCategoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReferenceReports">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.ReferenceReport">
+              <MappingFragment StoreEntitySet="ReferenceReport">
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="ReportTitle" ColumnName="ReportTitle" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ReferenceReportID" ColumnName="ReferenceReportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerCategories">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.CustomerCategory">
+              <MappingFragment StoreEntitySet="CustomerCategory">
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SendPorts">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.SendPort">
+              <MappingFragment StoreEntitySet="SendPort">
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="Weixin" ColumnName="Weixin" />
+                <ScalarProperty Name="HandPhone" ColumnName="HandPhone" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subsidiaries">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.Subsidiary">
+              <MappingFragment StoreEntitySet="Subsidiary">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SubsidiaryID" ColumnName="SubsidiaryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Channels">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.Channel">
+              <MappingFragment StoreEntitySet="Channel">
+                <ScalarProperty Name="ChannelValue" ColumnName="ChannelValue" />
+                <ScalarProperty Name="ChannelText" ColumnName="ChannelText" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChannelContents">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.ChannelContent">
+              <MappingFragment StoreEntitySet="ChannelContent">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ChannelValue" ColumnName="ChannelValue" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionCategories">
+            <EntityTypeMapping TypeName="WXBigData_OpinionReportModel.QuestionCategory">
+              <MappingFragment StoreEntitySet="QuestionCategory">
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

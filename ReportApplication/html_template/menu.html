@@ -1,0 +1,15 @@
+﻿#foreach($item in $items)
+<li>
+    <a href="$item.Url">
+        <i class="fa $item.IconClass fa-fw"></i>$item.Name<span class="fa arrow"></span>
+    </a>
+    <ul class="nav nav-second-level">
+        #foreach($innerItem in $item.Items)
+        <li>
+            <a href="$innerItem.Url">$innerItem.Name</a>
+        </li>
+        #end
+    </ul>
+</li>
+#end
+

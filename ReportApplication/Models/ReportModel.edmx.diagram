@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="520f538c71e54743a0ded1eb28225749" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.Report" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.ReportNumber" Width="1.5" PointX="2.375" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.Customer" Width="1.5" PointX="2.375" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.Article" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.ReferenceReport" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.CustomerCategory" Width="1.5" PointX="2.375" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.SendPort" Width="1.5" PointX="4" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.Subsidiary" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="false" />
+        <AssociationConnector Association="WXBigData_OpinionReportModel.FK_Subsidiary_Customer" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.Channel" Width="1.5" PointX="4" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.ChannelContent" Width="1.5" PointX="4" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="WXBigData_OpinionReportModel.QuestionCategory" Width="1.5" PointX="2.375" PointY="2.25" IsExpanded="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
